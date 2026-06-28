@@ -3,7 +3,7 @@ import requests
 
 # Substitua pelo IP real do computador que está rodando o 'server.py'
 # Se testar na mesma máquina do servidor, pode usar 'localhost'
-SERVIDOR_URL = "http://xxxxxx:5000" 
+SERVIDOR_URL = "http://192.168.100.105:5000" 
 
 def checar_ticket():
     try:

@@ -2,7 +2,7 @@ import customtkinter as ctk
 import requests
 
 # Configuração do Servidor
-SERVIDOR_URL = "http://localhost:5000"  # Substitua pelo IP do seu servidor
+SERVIDOR_URL = "http://xxxxxxxxxxxx:5000"  # Substitua pelo IP do seu servidor
 
 # Configuração visual do CustomTkinter
 ctk.set_appearance_mode("System")  # "System", "Dark" ou "Light"

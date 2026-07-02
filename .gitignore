@@ -1,0 +1,12 @@
+# Ambientes virtuais
+.venv/
+venv/
+env/
+
+# Arquivos compilados do Python (lixo gerado automaticamente)
+__pycache__/
+*.pyc
+
+# Arquivos de configuração do sistema operacional
+.DS_Store
+Thumbs.db

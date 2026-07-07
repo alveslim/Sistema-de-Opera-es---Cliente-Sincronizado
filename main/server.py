@@ -1,10 +1,19 @@
 from flask import Flask, jsonify, request
+import logging # <-- Adicione esta linha
 
 app = Flask(__name__)
 
+# --- NOVA CONFIGURAÇÃO PARA SILENCIAR O SPAM ---
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.ERROR)
+# -----------------------------------------------
+
+# Estado inicial do sistema
+# ... resto do código ...
+
 # Estado inicial do sistema
 dados_sistema = {
-    "ticket_atual": 37000,
+    "ticket_atual": 38000,
     "status": "Aguardando confirmação"
 }
 

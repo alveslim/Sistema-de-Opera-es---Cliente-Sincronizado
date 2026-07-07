@@ -11,11 +11,10 @@ class AppCliente(ctk.CTk):
         super().__init__()
 
         self.title("Sistema de Operações - Sincronizado")
-        self.geometry("450x420") # Aumentei um pouco a altura para caber o novo campo
+        self.geometry("450x420")
         self.resizable(False, False)
 
         self.ultimo_ticket_visto = None
-        # O URL agora é uma variável que pertence à interface, começando no localhost
         self.servidor_url = "http://localhost:5000"
 
         # --- NOVA SEÇÃO: Configuração de IP ---
@@ -25,9 +24,18 @@ class AppCliente(ctk.CTk):
         self.lbl_ip = ctk.CTkLabel(self.frame_config, text="IP do Servidor:", font=ctk.CTkFont(size=12, weight="bold"))
         self.lbl_ip.pack(side="left", padx=(0, 10))
 
-        # Caixa de texto onde você vai digitar o IP
-        self.entry_ip = ctk.CTkEntry(self.frame_config, placeholder_text="Ex: 192.168.0.10", width=140)
-        self.entry_ip.insert(0, "localhost") # Já começa escrito localhost por padrão
+        # Lista de IPs para aparecer no menu (você pode editar com o IP real do seu PC)
+        ips_sugeridos = [
+            "localhost", 
+            "192.168.0.10",
+            "192.168.0.100", 
+            "192.168.1.10",
+            "10.0.0.10"
+        ]
+
+        # ComboBox substitui o Entry: permite escolher da lista OU digitar um novo
+        self.entry_ip = ctk.CTkComboBox(self.frame_config, values=ips_sugeridos, width=140)
+        self.entry_ip.set("localhost") # Valor padrão ao abrir o app
         self.entry_ip.pack(side="left", padx=(0, 10))
 
         # Botão para salvar/atualizar o IP
@@ -87,7 +95,6 @@ class AppCliente(ctk.CTk):
 
     def buscar_dados_servidor(self):
         try:
-            # Agora usamos self.servidor_url no lugar da variável global
             resposta = requests.get(f"{self.servidor_url}/ticket", timeout=2)
             if resposta.status_code == 200:
                 return resposta.json()
@@ -129,7 +136,6 @@ class AppCliente(ctk.CTk):
             
             try:
                 payload = {"ticket": self.ultimo_ticket_visto}
-                # Agora usamos self.servidor_url no post também
                 resposta = requests.post(f"{self.servidor_url}/confirmar", json=payload, timeout=2)
                 
                 if resposta.status_code == 200:

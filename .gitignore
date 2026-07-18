@@ -6,6 +6,7 @@ env/
 # Arquivos compilados do Python (lixo gerado automaticamente)
 __pycache__/
 *.pyc
+.env
 
 # Arquivos de configuração do sistema operacional
 .DS_Store
